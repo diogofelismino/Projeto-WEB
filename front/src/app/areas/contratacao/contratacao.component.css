@@ -1,0 +1,42 @@
+.cards {
+  display: flex;
+  margin: 1rem;
+  flex-direction: row;
+
+  }
+  .card
+  {
+  width: 20rem;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0 , 0.25);
+
+
+  }
+
+  .grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  }
+
+  /* .mostraCards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+
+
+  } */
+
+
+  .mostraCards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: fit-content;
+    }
+
+    .arruma{
+      display: flex;
+      justify-content: flex-end;
+    }

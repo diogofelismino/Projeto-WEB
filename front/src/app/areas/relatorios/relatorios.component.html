@@ -1,0 +1,118 @@
+
+ <div class="mostraCards">
+  <div class="cards" >
+    <div class="card">
+      <div class="card-body">
+
+
+        <select [(ngModel)]="ver" (change)="verif()" class="form-select" aria-label="Default select example">
+          <option value="0" selected disabled>Selecione um Relatorio</option>
+          <option [value]="1" >Relatorio de Faturamento</option>
+          <option [value]="2" >Relatorio de Inadiplência</option>
+
+        </select>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="mostraCards" *ngIf="verifica">
+
+  <div class="cards" >
+    <div class="card">
+      <div class="card-body">
+        <div  class="col-md-12">
+          <table class="table table-dark table-hover">
+            <thead>
+              <tr>
+                <th>ID_SERVICO</th>
+                <th>DESCRICAO</th>
+                <th style="text-align: center;">ASSINANTES</th>
+                <th class="pre">VALOR</th>
+                <th class="pre">FATURAMENTO</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of relatorios;">
+                <td>{{item.iD_SERVICO}}</td>
+                <td>{{item.descricao}}</td>
+                <td style="text-align: center;">{{item.assinantes}}</td>
+                <td class="pre2">{{item.valor}}</td>
+                <td class="pre2">{{item.faturamento}}</td>
+
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="mostraCards" *ngIf="verificaIn">
+
+
+  <div class="cards" >
+
+
+    <div class="card">
+
+      <div class="card-body">
+
+
+        <div class="input-group mb-3">
+          <input  [(ngModel)]="cpf" type="text" class="form-control" placeholder="Informe um CPF" aria-label="Recipient's username" aria-describedby="button-addon2">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="pegarCPf()">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+
+
+        <div  class="col-md-12">
+          <table class="table table-dark table-hover">
+            <thead>
+              <tr>
+                <th>CPF</th>
+                <th>Nome</th>
+                <th >DESCRIÇÃO</th>
+                <th >PREÇO</th>
+
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of relatorios;">
+                <td>{{item.CPF}}</td>
+                <td>{{item.NOME}}</td>
+                <td >{{item.DESCRICAO}}</td>
+                <td >{{item.PRECO}}</td>
+
+
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

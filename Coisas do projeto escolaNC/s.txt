@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="flexbox">
+    <div class="titulo">
+      <h2>Usuários Cadastrados</h2>
+    </div>
+    <div class="flex-item printnone">
+      <a href="cadastro">
+        <button class="btn btn-sm btn-outline-success me-2">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+      </a>
+      <a href="">
+        <button class="btn btn-sm btn-outline-success me-2"
+        (click)="imprimir('conteudo')">
+          <i class="bi bi-printer"></i>
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <div id="conteudo" class="row">
+    <div *ngIf="!edita" class="col-md-12">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Data de Nascimento</th>
+            <th>Rua</th>
+            <th>Cidade</th>
+            <th class="printnone">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of usuarios;">
+            <td>{{item.nome}}</td>
+            <td>{{item.idade}}</td>
+            <td>{{item.cpf}}</td>
+            <td>{{item.rg}}</td>
+            <td>{{item.data_nasc}}</td>
+            <td>{{item.endereco}}</td>
+            <td>{{item.cidade}}</td>
+            <td class="aling-middle">
+              <div class="btn-group">
+                <button class="me-2 btn btn-sn btn-outline-primary"
+                (click)="editar(item);">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-sn btn-outline-danger">
+                  <i class="bi bi-trash3"></i>
+                </button>
+            </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="edita" class="col-md-6">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Data de Nascimento</th>
+            <th>Rua</th>
+            <th>Cidade</th>
+            <th class="printnone">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of usuarios;">
+            <td>{{item.nome}}</td>
+            <td>{{item.idade}}</td>
+            <td>{{item.cpf}}</td>
+            <td>{{item.rg}}</td>
+            <td>{{item.data_nasc}}</td>
+            <td>{{item.endereco}}</td>
+            <td>{{item.cidade}}</td>
+            <td class="aling-middle">
+              <div class="btn-group">
+                <button class="me-2 btn btn-sn btn-outline-primary"
+                (click)="edita=!edita;">
+                  <i class="bi bi-x"></i>
+                </button>
+                <button class="btn btn-sn btn-outline-danger">
+                  <i class="bi bi-trash3"></i>
+                </button>
+            </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="edita" class="offset-md-2 col-md-4" style="position: relative">
+       <h2>Edição de cadastro</h2>
+          <input type="text" [(ngModel)]="nome" class="mt-2 form-control" />
+          <input type="text" [(ngModel)]="idade" class="mt-2 form-control" />
+          <input type="text" [(ngModel)]="cpf" class="mt-2 form-control" />
+          <input type="text" [(ngModel)]="rg" class="mt-2 form-control" />
+          <input type="text" [(ngModel)]="data_nasc" class="mt-2 form-control" />
+          <input type="text" [(ngModel)]="endereco" class="mt-2 form-control" />
+          <input type="text" [(ngModel)]="cidade" class="mt-2 form-control" />
+          <button class="mt-2 btn btnsm btn-outline-success" (click)="salvar()">
+            <i class="bi bi-check2"></i>
+          </button>
+    </div>
+  </div>
+
+</div>

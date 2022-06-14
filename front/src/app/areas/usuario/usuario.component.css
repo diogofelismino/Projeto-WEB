@@ -1,0 +1,31 @@
+.flexbox{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+.flex-item {
+  margin-left: auto;
+}
+
+.printCpf {
+  white-space: nowrap;
+}
+
+#linha {
+  display: none;
+}
+
+.testt{
+  opacity: 1%;
+}
+
+.impressao{
+  display: block;
+}
+
+
+
+

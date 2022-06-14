@@ -1,0 +1,44 @@
+.flexbox{
+  display: flex;
+  flex-direction: row;
+
+
+}
+a{
+  padding: 1em;
+  text-decoration: none;
+  font-size: 1.5em;
+  color: green;
+}
+
+
+a:hover{
+  padding: 1em;
+  text-decoration: none;
+  font-size: 1.5em;
+  color: greenyellow;
+  text-shadow: 1px 1px #5b5959;
+}
+
+.fleee{
+  display: flex;
+  justify-content: space-between;
+}
+
+.arru
+{
+  align-items: flex-end;
+  margin: auto;
+  margin-right: 1%;
+}
+
+.btnL{
+  text-decoration: none;
+  text-align: center;
+  padding-left: 10px;
+}
+
+.textoCentro{
+  text-align: center;
+  height: 10px;
+}

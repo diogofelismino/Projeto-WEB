@@ -1,0 +1,62 @@
+<div class="container">
+  <form [formGroup]="form">
+    <h2>Cadastro</h2>
+    <div class="row">
+
+      <div class="col-lg-10">
+        <input [ngClass]="{'is-invalid': f.nome.errors && f.nome.touched}" formControlName="nome" type="text" class="form-control mt-2" placeholder="Nome" >
+        <div *ngIf="f.nome.errors?.required" class="invalid-feedback"> Insira um nome</div>
+      </div>
+
+      <div class="col-lg-2">
+        <input [ngClass]="{'is-invalid': f.idade.errors && f.idade.touched}" formControlName="idade" type="text" class="form-control mt-2" placeholder="Idade">
+        <div *ngIf="f.idade.errors?.required" class="invalid-feedback"> Insira uma idade</div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-5">
+        <input [ngClass]="{'is-invalid': f.cpf.errors && f.cpf.touched}" formControlName="cpf" type="text" class="form-control mt-2" placeholder="CPF">
+        <div *ngIf="f.cpf.errors?.required" class="invalid-feedback"> Insira um CPF</div>
+        <div *ngIf="f.cpf.errors?.minlength || f.cpf.errors?.maxlength" class="invalid-feedback"> CPF com tamanho invalido(Tem que ter 11 digitos)</div>
+      </div>
+
+      <div class="col-lg-3">
+        <input [ngClass]="{'is-invalid': f.rg.errors && f.rg.touched}" formControlName="rg" type="text" class="form-control mt-2" placeholder="RG">
+        <div *ngIf="f.rg.errors?.required" class="invalid-feedback"> Insira um RG</div>
+        <div *ngIf="f.rg.errors?.minlength || f.rg.errors?.maxlength" class="invalid-feedback"> RG com tamanho invalido(Tem que ter 9 digitos)</div>
+      </div>
+
+      <div class="col-lg-4">
+        <input [ngClass]="{'is-invalid': f.data_nasc.errors && f.data_nasc.touched}" formControlName="data_nasc" type="text" class="form-control mt-2" placeholder="Data de Nascimento">
+        <div *ngIf="f.data_nasc.errors?.required" class="invalid-feedback"> Insira uma data de nascimento</div>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-lg-7">
+        <input [ngClass]="{'is-invalid': f.endereco.errors && f.endereco.touched}" formControlName="endereco" type="text" class="form-control mt-2" placeholder="Endereço">
+        <div *ngIf="f.endereco.errors?.required" class="invalid-feedback"> Insira um endereço</div>
+      </div>
+      <div class="col-lg-5">
+        <input [ngClass]="{'is-invalid': f.cidade.errors && f.cidade.touched}" formControlName="cidade" type="text" class="form-control mt-2" placeholder="Cidade">
+        <div *ngIf="f.cidade.errors?.required" class="invalid-feedback"> Insira uma cidade</div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="col-lg-1 offset-lg-11">
+        <button [disabled]="f.nome.errors || f.cpf.errors || f.idade.errors || f.rg.errors || f.data_nasc.errors || f.endereco.errors || f.cidade.errors" type="button" class="btn btn-outline-success form-control mt-2"
+        (click)="criar();">
+        <i class="bi bi-check2"></i>
+      </button>
+      </div>
+    </div>
+
+  </form>
+
+
+
+</div>

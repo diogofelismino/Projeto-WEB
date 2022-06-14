@@ -1,0 +1,155 @@
+<div class="container">
+  <div class="flexbox">
+    <div class="titulo">
+      <h2>Usuários Cadastrados</h2>
+    </div>
+    <div class="flex-item printnone">
+      <a href="/principal/cadastro">
+        <button class="btn btn-sm btn-outline-success me-2">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+      </a>
+      <a href="/principal/usuarios">
+        <button class="btn btn-sm btn-outline-success me-2" (click)="imprimir('conteudo')">
+          <i class="bi bi-printer"></i>
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <div id="conteudo" class="row">
+    <div *ngIf="!edita && !teste" class="col-md-12">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Data de Nascimento</th>
+            <th>Rua</th>
+            <th>Cidade</th>
+            <th class="printnone impressao">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of usuarios;">
+            <td>{{item.nome}}</td>
+            <td>{{item.idade}}</td>
+            <td>{{item.cpf}}</td>
+            <td>{{item.rg}}</td>
+            <td>{{item.data_nasc}}</td>
+            <td>{{item.endereco}}</td>
+            <td>{{item.cidade}}</td>
+            <td class="aling-middle">
+              <div class="btn-group">
+                <button class="me-2 btn btn-sn btn-outline-primary" (click)="editar(item);">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-sn btn-outline-danger" (click)="setCpf(item)" data-bs-toggle="modal"
+                  data-bs-target="#modalConfirmacao">
+                  <i class="bi bi-trash3"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="edita" class="col-md-6">
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Data de Nascimento</th>
+            <th>Rua</th>
+            <th>Cidade</th>
+            <th class="printnone">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of usuarios;">
+            <td>{{item.nome}}</td>
+            <td>{{item.idade}}</td>
+            <td>{{item.cpf}}</td>
+            <td>{{item.rg}}</td>
+            <td>{{item.data_nasc}}</td>
+            <td>{{item.endereco}}</td>
+            <td>{{item.cidade}}</td>
+            <td class="aling-middle">
+              <div class="btn-group">
+                <button class="me-2 btn btn-sn btn-outline-primary" (click)="edita=!edita;">
+                  <i class="bi bi-x"></i>
+                </button>
+                <button class="btn btn-sn btn-outline-danger">
+                  <i class="bi bi-trash3"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="edita" class="offset-md-2 col-md-4" style="position: relative">
+      <h2>Edição de cadastro</h2>
+      <label for="nomeE">Nome</label>
+      <input id="nomeE" type="text" [(ngModel)]="nome" class="mt-2 form-control form-label" />
+
+      <label for="idadeE">Idade</label>
+      <input id="idadeE" type="text" [(ngModel)]="idade" class="mt-2 form-control form-label" />
+
+      <label for="cpfE">CPF</label>
+      <input id="cpfE" type="text" [(ngModel)]="cpf" class="mt-2 form-control form-label" disabled />
+
+      <label for="rgE">RG</label>
+      <input id="rgE" type="text" [(ngModel)]="rg" class="mt-2 form-control form-label" />
+
+      <label for="data_nascE">Data de Nascimento</label>
+      <input id="data_nascE" type="text" [(ngModel)]="data_nasc" class="mt-2 form-control form-label" />
+
+      <label for="enderecoE">Endereço</label>
+      <input id="enderecoE" type="text" [(ngModel)]="endereco" class="mt-2 form-control form-label" />
+
+      <label for="cidadeE">Cidade</label>
+      <input id="cidadeE" type="text" [(ngModel)]="cidade" class="mt-2 form-control form-label" />
+
+      <button class="mt-2 btn btnsm btn-outline-success" (click)="salvar()">
+        <i class="bi bi-check2"></i>
+      </button>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+<div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Confirmar exclusão</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      Tem certeza que deseja excluir o registro?
+      <br />
+      <strong>Nome:</strong> {{ nome }}
+      <br />
+      <strong>Cpf:</strong> {{ cpf }}
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="excluir()">
+        Excluir
+      </button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+

@@ -1,0 +1,82 @@
+.idi{
+  width: 20%;
+}
+.des{
+  width: 60%;
+}
+
+.pre{
+  width: 15%;
+  text-align: end;
+  padding-right: 100px;
+
+}
+.pre2{
+
+  text-align: end;
+  padding-right: 100px;
+
+
+}
+.final{
+  text-align: end;
+}
+.finalt{
+  padding-left: 16px;
+  text-align: end;
+}
+
+
+.bto{
+  width: 5%;
+  padding-left: 50px;
+}
+
+
+
+
+
+
+
+
+.ativa{
+
+  display: none;
+
+
+}
+
+
+#modal-bg{
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+
+}
+
+
+
+.flexbox{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+.flex-item {
+  margin-left: auto;
+}
+
+.printCpf {
+  white-space: nowrap;
+}
+
+#linha {
+  display: none;
+}
+
+

@@ -1,0 +1,35 @@
+<div *ngIf="!ver" class="card pos" >
+
+  <div class="card-body">
+    <h4 class="card-title centro">Login</h4>
+
+
+    <form [formGroup]="form">
+      <label   class="col-sm-2 col-form-label">CPF</label>
+      <div class="mb-3 row">
+
+        <div class="col-sm-12">
+          <input type="text"  formControlName="cpf"  class="form-control"  >
+        </div>
+      </div>
+
+      <label  class="col-sm-2 col-form-label">Password</label>
+
+      <div class="mb-3 row">
+
+        <div class="col-sm-12">
+          <input type="password" formControlName="hash_senha" class="form-control" >
+        </div>
+      </div>
+     </form>
+
+
+    <button type="button" class="btn btn-primary col-sm-12" (click)="logar()">Entrar</button>
+
+
+
+  </div>
+</div>
+
+
+

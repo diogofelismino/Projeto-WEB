@@ -1,0 +1,165 @@
+
+<div  *ngIf="!edita" class="container">
+<div class="flexbox">
+  <div class="titulo">
+    <h2>Usuários Cadastrados</h2>
+  </div>
+  <div class="flex-item printnone">
+    <button class="btn btn-sm btn-outline-success me-2"
+    data-bs-toggle="modal"
+    data-bs-target="#modalConfirmacaoI">
+    <i class="bi bi-plus-lg"></i>
+  </button>
+  </div>
+
+</div>
+
+
+
+
+
+<div id="conteudo" class="row">
+  <div  class="col-md-12">
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th class="idi">Id</th>
+          <th>Descição</th>
+          <th class="pre">Preço</th>
+          <th class="printnone bto">Opções</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of servicos;">
+          <td>{{item.id}}</td>
+
+          <td>{{item.descricao}}</td>
+
+          <td class=pre2>{{item.preco}}</td>
+
+          <td class="aling-middle final">
+            <div class="btn-group">
+
+              <button class="me-2 btn btn-sm btn-outline-primary" (click)="editar(item);"
+              data-bs-toggle="modal"
+                  data-bs-target="#modalConfirmacao">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-sm btn-outline-danger" (click)="setId(item)"
+              data-bs-toggle="modal"
+                  data-bs-target="#modalConfirmacaoD">
+                <i class="bi bi-trash3"></i>
+              </button>
+
+
+
+
+
+
+            </div>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+  <div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Serviço</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <label for="nomeE">id</label>
+          <input id="nomeE" type="text" [(ngModel)]="id" class="mt-2 form-control form-label" disabled/>
+
+          <label for="idadeE">Descrição</label>
+          <input id="idadeE" type="text" [(ngModel)]="descricao" class="mt-2 form-control form-label" />
+
+          <label for="cpfE">Preço</label>
+          <input id="cpfE" type="text" [(ngModel)]="preco" class="mt-2 form-control form-label"  />
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+          (click)="salvar()">
+            Salvar
+          </button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
+    <div class="modal fade" id="modalConfirmacaoD" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Confirmar exclusão</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Tem certeza que deseja excluir o registro?
+            <br />
+            <strong>Id:</strong> {{ id }}
+            <br />
+            <strong>Descrição:</strong> {{ descricao }}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="excluir()">
+              Excluir
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+</div>
+
+
+<div   class="modal fade" id="modalConfirmacaoI" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Inserir novo serviço</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form [formGroup]="form">
+
+
+
+
+          <label for="idadeE">Descrição</label>
+          <input [ngClass]="{'is-invalid': f.descricao.errors && f.descricao.touched}" formControlName="descricao" type="text" class="mt-2 form-control form-label" />
+          <div *ngIf="f.descricao.errors?.required" class="invalid-feedback"> Insira uma descrição</div>
+
+          <label for="cpfE">Preço</label>
+          <input [ngClass]="{'is-invalid': f.preco.errors && f.preco.touched}"  formControlName="preco" type="text" class="mt-2 form-control form-label"  />
+          <div *ngIf="f.preco.errors?.required" class="invalid-feedback"> Insira um preço</div>
+          <div *ngIf="f.preco.errors?.pattern" class="invalid-feedback"> So pode conter ponto</div>
+
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button [disabled]="f.descricao.errors || f.preco.errors" type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="criar()">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

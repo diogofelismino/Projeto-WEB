@@ -1,0 +1,72 @@
+<div *ngIf="ver " class="card pos" >
+
+  <div class="card-body">
+    <h1 class="h3 mb-3 fw-normal centro espcaco">Login</h1>
+
+
+    <form [formGroup]="form">
+
+      <div class="form-floating">
+        <input type="email" formControlName="cpf" class="form-control espcaco"   placeholder="name@example.com">
+        <label >CPF</label>
+      </div>
+
+      <div class="form-floating">
+        <input type="password" formControlName="hash_senha" class="form-control espcaco"   placeholder="Password">
+        <label >Senha</label>
+      </div>
+
+    </form>
+
+      <button type="button" class="btn btn-link espcaco" (click)="mudar()">Registrar-se agora?</button>
+      <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="logar()">Entrar</button>
+
+
+
+  </div>
+</div>
+
+
+<div *ngIf="cadastro" class="card pos" >
+
+  <div class="card-body">
+    <h1 class="h3 mb-3 fw-normal centro">Cadastro</h1>
+
+
+    <form [formGroup]="form">
+
+      <div class="form-floating">
+
+        <input type="email" [ngClass]="{'is-invalid': f.nome.errors && f.nome.touched}" formControlName="nome" class="form-control espcaco" id="floatingInput"  placeholder="name@example.com">
+
+        <label for="floatingInput">Nome</label>
+
+      </div>
+
+
+      <div class="form-floating">
+        <input type="email" [ngClass]="{'is-invalid': f.cpf.errors && f.cpf.touched}" formControlName="cpf" class="form-control espcaco" id="floatingInput"  placeholder="name@example.com">
+        <div *ngIf="f.cpf.errors?.minlength || f.cpf.errors?.maxlength" class="invalid-feedback"> CPF com tamanho invalido(Tem que ter 11 digitos)</div>
+        <label for="floatingInput">CPF</label>
+      </div>
+
+      <div class="form-floating">
+        <input type="password" [ngClass]="{'is-invalid': f.hash_senha.errors && f.hash_senha.touched}" formControlName="hash_senha" class="form-control espcaco" id="floatingPassword"  placeholder="Password">
+        <div *ngIf="f.cpf.errors?.minlength " class="invalid-feedback"> A senha deve conter pelomenos 6 digitos</div>
+        <label for="floatingPassword">Senha</label>
+      </div>
+
+     </form>
+
+     <div class="flex">
+        <button [disabled]="f.nome.errors || f.cpf.errors || f.hash_senha.errors " class="w-100 btn btn-lg btn-primary mar" type="submit" (click)="registrar()">Registrar</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="mudarV()">Voltar</button>
+      </div>
+
+
+  </div>
+</div>
+
+
+
+
